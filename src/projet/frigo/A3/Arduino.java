@@ -109,14 +109,18 @@ public class Arduino implements SerialPortEventListener {
                 String[] parts = string.split(";");
                 String temp1 = parts[0]; // 27°C
                 String humi1 = parts[1]; // 53 %
-                /*System.out.print("Temperature :" + temp1);
-                System.out.println(" / Humidité :" + humi1);
+                String temp2_rosee = parts[2]; // 13°
+                /*Display using for debugging:
+                System.out.print("Temperature :" + temp1);
+                System.out.print(" / Humidité :" + humi1);
+                System.out.println(" / Rosée :" + temp2_rosee);
                 */
                 //On envoie les données à la View à chaque passage de la boucle
                 frame.fieldTemperature.setText(temp1);
                 frame.fieldHumidity.setText(humi1);
                 String tempConsigne ="18";
                 frame.labelConsigne.setText(tempConsigne);
+                frame.fieldPoint_rosee.setText(temp2_rosee);
           
                 
             } catch (Exception e) {

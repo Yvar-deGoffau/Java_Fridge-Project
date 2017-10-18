@@ -25,8 +25,9 @@ void setup(){
 void loop(){
   //DHT
     //Read data and store it to variables hum and temp
-    hum = dht.readHumidity();
-    temp= dht.readTemperature();
+    float hum = dht.readHumidity();
+    float temp= dht.readTemperature();
+    
     //Print temp and humidity values to serial monitor with " 25.64;50.20" Format
     /*
     Serial.print("Humidité: ");
@@ -38,6 +39,19 @@ void loop(){
     Serial.print("DATA;");*/
     Serial.print(temp);
     Serial.print(";");
-    Serial.println(hum);
+    Serial.print(hum);
+    Serial.print(";");
+    Serial.println(point_rosee(hum,temp));
+
     delay(1000); //Delay 1 sec.*/
 }
+
+    double point_rosee(double humPR, double tempPR) {
+      
+      //Constants
+      const double a = 17.27;
+      const double b = 237.7;
+
+      double temp = (a * tempPR) / (b + tempPR) + log(humPR * 0.01);
+      return (b * temp) / (a - temp);
+    }

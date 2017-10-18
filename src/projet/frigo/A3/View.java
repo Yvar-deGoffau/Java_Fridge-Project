@@ -23,6 +23,7 @@ public class View extends JFrame {
 	public final JLabel fieldHumidity;
 	public final JLabel labelConsigne;
 	public final JButton buttonConsignePlus;
+	public final JLabel fieldPoint_rosee;
 
 	/**
 	 * Launch the application.
@@ -90,6 +91,17 @@ public class View extends JFrame {
 		JLabel label = new JLabel("%");
 		label.setForeground(Color.CYAN);
 		label.setFont(new Font("Cambria", Font.PLAIN, 18));
+		
+		JLabel lblPointDeRose = new JLabel("Point de ros\u00E9e:");
+		lblPointDeRose.setFont(new Font("Cambria", Font.PLAIN, 18));
+		
+		fieldPoint_rosee = new JLabel("0");
+		fieldPoint_rosee.setForeground(Color.PINK);
+		fieldPoint_rosee.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		
+		JLabel label_1 = new JLabel("\u00B0C");
+		label_1.setForeground(Color.PINK);
+		label_1.setFont(new Font("Cambria", Font.PLAIN, 18));
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
 			gl_contentPane.createParallelGroup(Alignment.TRAILING)
@@ -116,14 +128,21 @@ public class View extends JFrame {
 									.addComponent(buttonConsignePlus, GroupLayout.PREFERRED_SIZE, 90, GroupLayout.PREFERRED_SIZE)
 									.addComponent(buttonGraphicHumi, GroupLayout.PREFERRED_SIZE, 208, GroupLayout.PREFERRED_SIZE))
 								.addComponent(buttonGraphicTemp, GroupLayout.PREFERRED_SIZE, 210, GroupLayout.PREFERRED_SIZE))
-							.addContainerGap(46, Short.MAX_VALUE))
+							.addContainerGap(58, Short.MAX_VALUE))
 						.addGroup(gl_contentPane.createSequentialGroup()
 							.addComponent(lblConsigne, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 							.addPreferredGap(ComponentPlacement.UNRELATED)
 							.addComponent(labelConsigne, GroupLayout.PREFERRED_SIZE, 108, GroupLayout.PREFERRED_SIZE)
 							.addPreferredGap(ComponentPlacement.RELATED)
 							.addComponent(buttonConsigneMinus, GroupLayout.PREFERRED_SIZE, 89, GroupLayout.PREFERRED_SIZE)
-							.addGap(830))))
+							.addGap(830))
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addComponent(lblPointDeRose, GroupLayout.PREFERRED_SIZE, 164, GroupLayout.PREFERRED_SIZE)
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addComponent(fieldPoint_rosee, GroupLayout.PREFERRED_SIZE, 58, GroupLayout.PREFERRED_SIZE)
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addComponent(label_1, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)
+							.addContainerGap(320, Short.MAX_VALUE))))
 		);
 		gl_contentPane.setVerticalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
@@ -148,7 +167,11 @@ public class View extends JFrame {
 						.addComponent(labelConsigne, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
 						.addComponent(buttonConsigneMinus)
 						.addComponent(buttonConsignePlus))
-					.addContainerGap(43, Short.MAX_VALUE))
+					.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
+						.addComponent(lblPointDeRose, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
+						.addComponent(fieldPoint_rosee, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
+						.addComponent(label_1, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)))
 		);
 		contentPane.setLayout(gl_contentPane);
 	}
