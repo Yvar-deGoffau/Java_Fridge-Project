@@ -11,7 +11,6 @@ import gnu.io.SerialPortEvent;
 import gnu.io.SerialPortEventListener;
 import java.util.Enumeration;
 
-//help here https://playground.arduino.cc/Interfacing/Java
 public class Arduino implements SerialPortEventListener {
     SerialPort serialPort;
     /** The port we're normally going to use. */

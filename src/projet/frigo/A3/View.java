@@ -18,9 +18,6 @@ import javax.swing.SwingConstants;
 
 public class View extends JFrame {
 	
-	
-	
-	
 	public final JPanel contentPane;
 	public final JLabel fieldTemperature;
 	public final JLabel fieldHumidity;
@@ -66,14 +63,12 @@ public class View extends JFrame {
 		labelConsigne.setForeground(Color.ORANGE);
 		labelConsigne.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		
-		
 		buttonConsignePlus = new JButton("+");
 		buttonConsignePlus.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		
 		JButton buttonConsigneMinus = new JButton("-");
 		buttonConsigneMinus.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
 			}
 		});
 		buttonConsigneMinus.setFont(new Font("Tahoma", Font.PLAIN, 18));
