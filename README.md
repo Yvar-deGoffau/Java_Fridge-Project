@@ -1,9 +1,9 @@
 # Java_Fridge-Project
 Java project realized using C++ and Java through a serial connection to built an HMI
 
-#Final appearance
+##Final appearance
 
-#[![External components](https://github.com/Cedric-M/Java_Fridge-Project/raw/master/Images/aspect.png)]
+![External components](https://github.com/Cedric-M/Java_Fridge-Project/raw/master/Images/aspect.png)]
 
 ## Built With
 
@@ -12,10 +12,13 @@ Java project realized using C++ and Java through a serial connection to built an
 
 
 
+## Deployment
 
+If you download and deploy it , take care about the RTXTX path in Eclipse, you should put your own path otherwise nothing will work
 ## Materials
 
 * Arduino Uno
 * DHT AM2302* Breadboard
 
-[Link to the GitHub Project:](https://github.com/Cedric-M/Java_Fridge-Project)
+
+## Links[Link to the GitHub Project:](https://github.com/Cedric-M/Java_Fridge-Project)
