@@ -29,15 +29,17 @@ public class Arduino implements SerialPortEventListener {
     private BufferedReader input;
     /** The output stream to the port */
     private OutputStream output;
+	private Model model;
     /** Milliseconds to block while waiting for port open */
     private static final int TIME_OUT = 2000;
     /** Default bits per second for COM port. */
     private static final int DATA_RATE = 9600;
     
-    private View frame;
     
-    public Arduino(View frame){
-    	this.frame = frame;
+    public Arduino() {
+    	
+    this.model = new Model(this);
+    
     }
 
     public void initialize() {
@@ -115,12 +117,9 @@ public class Arduino implements SerialPortEventListener {
                 System.out.print(" / Humidité :" + humi1);
                 System.out.println(" / Rosée :" + temp2_rosee);
                 */
-                //On envoie les données à la View à chaque passage de la boucle
-                frame.fieldTemperature.setText(temp1);
-                frame.fieldHumidity.setText(humi1);
-                String tempConsigne ="18";
-                frame.labelConsigne.setText(tempConsigne);
-                frame.fieldPoint_rosee.setText(temp2_rosee);
+                
+                //Sending Data to Model at every loop
+                model.onValueChanges(temp1, humi1, temp2_rosee);
           
                 
             } catch (Exception e) {

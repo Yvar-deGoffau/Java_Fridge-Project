@@ -17,88 +17,103 @@ import java.awt.event.ActionEvent;
 import javax.swing.SwingConstants;
 
 public class View extends JFrame {
-	
+
 	public final JPanel contentPane;
 	public final JLabel fieldTemperature;
 	public final JLabel fieldHumidity;
-	public final JLabel labelConsigne;
+	public final JLabel fieldConsigne;
 	public final JButton buttonConsignePlus;
+	public final JButton buttonConsigneMinus;
 	public final JLabel fieldPoint_rosee;
+	private Controller controller;
 
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		
-	}
 
 	/**
 	 * Create the frame.
 	 */
-	public View() {
+	public View(Controller controller) {
+
+		this.controller = controller;
+		
+
 		setTitle("Frigo GUI");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 621, 247);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
-		
+
 		JLabel lblNewLabel = new JLabel("Temp\u00E9rature :");
 		lblNewLabel.setFont(new Font("Cambria", Font.PLAIN, 18));
-		
+
 		JLabel lblHumidit = new JLabel("Humidit\u00E9 :");
 		lblHumidit.setFont(new Font("Cambria", Font.PLAIN, 18));
-		
+
 		JLabel lblConsigne = new JLabel("Temp\u00E9rature de consigne :");
 		lblConsigne.setFont(new Font("Cambria", Font.PLAIN, 18));
-		
+
 		fieldTemperature = new JLabel("0");
 		fieldTemperature.setForeground(Color.RED);
 		fieldTemperature.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		
+
 		fieldHumidity = new JLabel("0");
 		fieldHumidity.setForeground(Color.CYAN);
 		fieldHumidity.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		
-		labelConsigne = new JLabel("0\u00B0C");
-		labelConsigne.setForeground(Color.ORANGE);
-		labelConsigne.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		
+
+		fieldConsigne = new JLabel("0");
+		fieldConsigne.setForeground(Color.ORANGE);
+		fieldConsigne.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		fieldConsigne.setText(controller.onConsigneChange(3));
+
 		buttonConsignePlus = new JButton("+");
 		buttonConsignePlus.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		
-		JButton buttonConsigneMinus = new JButton("-");
-		buttonConsigneMinus.addActionListener(new ActionListener() {
+		buttonConsignePlus.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
+				fieldConsigne.setText(controller.onConsigneChange(1));
+
 			}
 		});
-		buttonConsigneMinus.setFont(new Font("Tahoma", Font.PLAIN, 18));
+
+		buttonConsigneMinus = new JButton("-");
+		buttonConsigneMinus.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				fieldConsigne.setText(controller.onConsigneChange(0));
+			}
+		});
 		
+		buttonConsigneMinus.setFont(new Font("Tahoma", Font.PLAIN, 18));
+
 		JButton buttonGraphicTemp = new JButton("Interface Graphique");
 		buttonGraphicTemp.setFont(new Font("Cambria", Font.PLAIN, 17));
-		
+
 		JButton buttonGraphicHumi = new JButton("Interface Graphique");
 		buttonGraphicHumi.setFont(new Font("Cambria", Font.PLAIN, 17));
 		buttonGraphicHumi.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				
 			}
 		});
-		
+
 		JLabel lblc = new JLabel("\u00B0C");
 		lblc.setForeground(Color.RED);
 		lblc.setFont(new Font("Cambria", Font.PLAIN, 18));
-		
+
 		JLabel label = new JLabel("%");
 		label.setForeground(Color.CYAN);
 		label.setFont(new Font("Cambria", Font.PLAIN, 18));
-		
+
 		JLabel lblPointDeRose = new JLabel("Point de ros\u00E9e:");
 		lblPointDeRose.setFont(new Font("Cambria", Font.PLAIN, 18));
-		
+
 		fieldPoint_rosee = new JLabel("0");
 		fieldPoint_rosee.setForeground(Color.PINK);
 		fieldPoint_rosee.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		
+
 		JLabel label_1 = new JLabel("\u00B0C");
 		label_1.setForeground(Color.PINK);
 		label_1.setFont(new Font("Cambria", Font.PLAIN, 18));
@@ -132,8 +147,8 @@ public class View extends JFrame {
 						.addGroup(gl_contentPane.createSequentialGroup()
 							.addComponent(lblConsigne, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 							.addPreferredGap(ComponentPlacement.UNRELATED)
-							.addComponent(labelConsigne, GroupLayout.PREFERRED_SIZE, 108, GroupLayout.PREFERRED_SIZE)
-							.addPreferredGap(ComponentPlacement.RELATED)
+							.addComponent(fieldConsigne, GroupLayout.PREFERRED_SIZE, 37, GroupLayout.PREFERRED_SIZE)
+							.addGap(75)
 							.addComponent(buttonConsigneMinus, GroupLayout.PREFERRED_SIZE, 89, GroupLayout.PREFERRED_SIZE)
 							.addGap(830))
 						.addGroup(gl_contentPane.createSequentialGroup()
@@ -164,7 +179,7 @@ public class View extends JFrame {
 					.addGap(18)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
 						.addComponent(lblConsigne, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
-						.addComponent(labelConsigne, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
+						.addComponent(fieldConsigne, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
 						.addComponent(buttonConsigneMinus)
 						.addComponent(buttonConsignePlus))
 					.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
