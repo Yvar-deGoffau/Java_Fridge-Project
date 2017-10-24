@@ -23,6 +23,6 @@ If you download and deploy it , take care about the RXTX path in Eclipse, you sh
 
 ## Links
 
-Link to the[GitHub Project:](https://github.com/Yvar-deGoffau/Java_Fridge-Project)
+[GitHub Project ](https://github.com/Yvar-deGoffau/Java_Fridge-Project)
 
-[Documentation:](https://yvar-degoffau.github.io/Java_Fridge-Project/Javadoc/index.html)
+[Documentation ](https://yvar-degoffau.github.io/Java_Fridge-Project/Javadoc/index.html)
