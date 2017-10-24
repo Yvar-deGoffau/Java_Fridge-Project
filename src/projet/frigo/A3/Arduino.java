@@ -11,37 +11,68 @@ import gnu.io.SerialPortEvent;
 import gnu.io.SerialPortEventListener;
 import java.util.Enumeration;
 
+/**
+ * The class used to connect to the Arduino
+ * <p>
+ * This class is used to connect to the Arduino. 
+ * It implements SerialPortEventListener to register as a dispatcher,
+ *  and then on each serialEvent it dispatch the data and sends it to the Model.
+ *
+ */
 public class Arduino implements SerialPortEventListener {
+    /** 
+     * The port we're going to use. 
+     */
     SerialPort serialPort;
-    /** The port we're normally going to use. */
+
+    /** 
+     * Port names to test for the Arduino under different OS
+     */
     private static final String PORT_NAMES[] = {
             "/dev/tty.usbserial-A9007UX1", // Mac OS X
             "/dev/ttyACM0", // Raspberry Pi
             "/dev/ttyUSB0", // Linux
-            "COM3", // Widows
-
+            "COM3", // Windows
     };
+    
     /**
      * A BufferedReader which will be fed by a InputStreamReader
-     * converting the bytes into characters
+     * converting the bytes into characters and
      * making the displayed results codepage independent
      */
     private BufferedReader input;
-    /** The output stream to the port */
+    
+    /** 
+     * The output stream to the port
+     */
     private OutputStream output;
+    
+    /**
+     * A reference to the Model to send data to
+     */
 	private Model model;
-    /** Milliseconds to block while waiting for port open */
+	
+    /**
+     *  Milliseconds to block while waiting for the port to open
+     */
     private static final int TIME_OUT = 2000;
-    /** Default bits per second for COM port. */
+    
+    /** 
+     * Default bits per second rate for COM port. 
+     * Should be the same as under the Arduino 
+     */
     private static final int DATA_RATE = 9600;
     
     
     public Arduino() {
-    	
+    	// Initialize the Model
     this.model = new Model(this);
     
     }
 
+    /**
+     * Search for the port, connect to it, and add Event Listeners for the dispatch loop
+     */
     public void initialize() {
         // the next line is for Raspberry Pi and
         // gets us into the while loop and was suggested here was suggested http://www.raspberrypi.org/phpBB3/viewtopic.php?f=81&t=32186
@@ -60,6 +91,7 @@ public class Arduino implements SerialPortEventListener {
                 }
             }
         }
+        //Todo: Start the Simulator here
         if (portId == null) {
             System.out.println("Error: Could not find COM port. Please plug in the Arduino Board");
             return;
@@ -100,7 +132,15 @@ public class Arduino implements SerialPortEventListener {
     }
 
     /**
-     * Handle an event on the serial port. Read the data and print it.
+     * Handle an event on the serial port. Read the data and interpret it.
+     * <p>
+     * The Arduino sends the data under the following format:
+     * <p>
+     * {@code < Temperature > ; < Humidité > ; < Point de Rosée > \n}
+     * <p>
+     * This function read that from the event, dispatch it, and sends it to the Model.
+     * 
+     * @param oEvent Event data. See gnu.io.SerialPortEvent
      */
     public synchronized void serialEvent(SerialPortEvent oEvent) {
         if (oEvent.getEventType() == SerialPortEvent.DATA_AVAILABLE) {
@@ -108,6 +148,7 @@ public class Arduino implements SerialPortEventListener {
             	//Boucle qui récupère les données depuis l'arduino
                 String inputLine=input.readLine();
                 String string = inputLine;
+                //Sépare les differents parties
                 String[] parts = string.split(";");
                 String temp1 = parts[0]; // 27°C
                 String humi1 = parts[1]; // 53 %

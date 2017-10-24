@@ -16,6 +16,9 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.SwingConstants;
 
+/**
+ * Launch the application.
+ */
 public class View extends JFrame {
 
 	public final JPanel contentPane;
@@ -27,12 +30,10 @@ public class View extends JFrame {
 	public final JLabel fieldPoint_rosee;
 	private Controller controller;
 
-	/**
-	 * Launch the application.
-	 */
 
 	/**
 	 * Create the frame.
+	 * @param controller Our controller
 	 */
 	public View(Controller controller) {
 
