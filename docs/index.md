@@ -1,5 +1,5 @@
 # Java_Fridge-Project
-Java project realized using C++ and Java through a serial connection to built an HMI
+Using Java and Arduino to control an intelligent fridge.
 
 Final appearance
 
@@ -15,6 +15,7 @@ Final appearance
 ## Deployment
 
 If you download and deploy it , take care about the RXTX path in Eclipse, you should put your own path otherwise nothing will work
+
 ## Materials
 
 * Arduino Uno
